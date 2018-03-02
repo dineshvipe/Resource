@@ -1,0 +1,111 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link rel="shortcut icon" type="image/x-icon" href="https://www.shareicon.net/data/2015/08/15/85563_search_512x512.png" />
+  <title>View Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'home' %}">Resouce Engine</a>
+    </div>
+  </div>
+</nav>
+<br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-1 col-md-offset-5">
+                {% if category == "Music" %}
+                <img class="img-circle" src="{% static 'image/music.png'%}" height="100" width="100"></div>
+                {% endif %}
+                {% if category == "Documents" %}
+                <img class="img-circle" src="{% static 'image/documents.png'%}" height="100" width="100"></div>
+                {% endif %}
+                {% if category == "Scripts" %}
+                <img class="img-circle" src="{% static 'image/scripts.png'%}" height="100" width="100"></div>
+                {% endif %}
+                {% if category == "Images" %}
+                <img class="img-circle" src="{% static 'image/images.png'%}" height="100" width="100"></div>
+                {% endif %}
+                {% if category == "Videos" %}
+                <img class="img-circle" src="{% static 'image/video.png'%}" height="100" width="100"></div>
+                {% endif %}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 panel panel-lg text-justify">
+            <h4><b>{{currTitle}}</b></h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 panel panel-lg">
+            <h3><b>5</b> Comment's:</h3>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 panel panel-lg">
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png" class="img-circle" height="32" width="32">
+                </div>
+                <div class="col-md-10">
+                    <blockquote>yeah
+                            its correct that the making reservations in educational field is irrelevant
+                            it does not equalize the potential of the students</blockquote>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png" class="img-circle" height="32" width="32">
+                </div>
+                <div class="col-md-10">
+                    <blockquote>Fantastic goods from you, man. I have understand your stuff previous to and you are just too wonderful. I really like what you have acquired here, really like what you’re saying and the way in which you say it. You make it entertaining and you still take care of to keep it sensible. I cant wait to read far more from you. This is actually a great site.</blockquote>
+                </div>
+            </div>
+             <hr>
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png" class="img-circle" height="32" width="32">
+                </div>
+                <div class="col-md-10">
+                    <blockquote>I am a student of bsc and I am just choked by the education system..
+                            ..what should I do?</blockquote>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png" class="img-circle" height="32" width="32">
+                </div>
+                <div class="col-md-10">
+                    <blockquote>Sir, all these questions would be disappeared in our education system. When he was small, he was more creative but had poor score in the school. Now he started cramming and became the topper of the class. Whether it is true education ?</blockquote>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png" class="img-circle" height="32" width="32">
+                </div>
+                <div class="col-md-10">
+                    <blockquote>It is really very nice article and I also agree on the issues with you. My kids are also studying in a very good school and getting good scores. But I am not satisfied with Indian Education System, because kids are so busy in remembering the things that they are not developing good health, not learning the style of living a happy life and make others happy.</blockquote>
+                </div>
+            </div>
+            <hr>   
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

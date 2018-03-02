@@ -1,0 +1,817 @@
+{%load staticfiles%}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="https://www.shareicon.net/data/2015/08/15/85563_search_512x512.png" />
+    <style type="text/css">
+
+                
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans|Wendy+One');
+     
+
+      body{
+        background-color: whitesmoke;
+        font-family: 'Droid Sans', sans-serif;
+      }
+      .file {
+  visibility: hidden;
+  position: absolute;
+}
+
+#hearts { color: #FF0000;cursor: pointer;}
+#hearts-existing { color: #87bad7;}
+
+
+.txt-format{
+font-size: 80%;
+}
+
+
+.overflow-texter {
+   -moz-hyphens:auto;
+   -ms-hyphens:auto;
+   -webkit-hyphens:auto;
+   hyphens:auto;
+   word-wrap:break-word;
+}
+
+
+
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="css/footer.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    <!-- Begin emoji-picker Stylesheets -->
+    <link href="../css/emoji.css" rel="stylesheet">
+
+    <!--J127689-->
+
+
+    <title>Homepage Page</title>
+
+    </head>
+
+    <body style="background-color: whitesmoke;">
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      
+<script type="text/javascript" src="../scripts/echo.js"></script>
+
+
+ <!-- Begin emoji-picker JavaScript -->
+    <script src="../scripts/config.js"></script>
+    <script src="../scripts/util.js"></script>
+    <script src="../scripts/jquery.emojiarea.js"></script>
+    <script src="../scripts/emoji-picker.js"></script>
+    <!-- End emoji-picker JavaScript -->
+
+<script>
+    echo.init({
+      offset: 100,
+      throttle: 250,
+      unload: false,
+      callback: function (element, op) {
+        console.log(element, 'has been', op + 'ed')
+      }
+    });
+    </script>
+    
+
+ <script>
+      $(function() {
+        // Initializes and creates emoji set from sprite sheet
+        window.emojiPicker = new EmojiPicker({
+          emojiable_selector: '[data-emojiable=true]',
+          assetsPath: '../img/',
+          popupButtonClasses: 'fa fa-smile-o'
+        });
+        // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+        // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+        // It can be called as many times as necessary; previously converted input fields will not be converted again
+        window.emojiPicker.discover();
+      });
+    </script>
+
+<script>
+
+var __slice = [].slice;
+
+(function($, window) {
+  var Starrr;
+
+  Starrr = (function() {
+    Starrr.prototype.defaults = {
+      rating: void 0,
+      numStars: 5,
+      change: function(e, value) {}
+    };
+
+    function Starrr($el, options) {
+      var i, _, _ref,
+        _this = this;
+
+      this.options = $.extend({}, this.defaults, options);
+      this.$el = $el;
+      _ref = this.defaults;
+      for (i in _ref) {
+        _ = _ref[i];
+        if (this.$el.data(i) != null) {
+          this.options[i] = this.$el.data(i);
+        }
+      }
+      this.createStars();
+      this.syncRating();
+      this.$el.on('mouseover.starrr', 'span', function(e) {
+        return _this.syncRating(_this.$el.find('span').index(e.currentTarget) + 1);
+      });
+      this.$el.on('mouseout.starrr', function() {
+        return _this.syncRating();
+      });
+      this.$el.on('click.starrr', 'span', function(e) {
+        return _this.setRating(_this.$el.find('span').index(e.currentTarget) + 1);
+      });
+      this.$el.on('starrr:change', this.options.change);
+    }
+
+    Starrr.prototype.createStars = function() {
+      var _i, _ref, _results;
+
+      _results = [];
+      for (_i = 1, _ref = this.options.numStars; 1 <= _ref ? _i <= _ref : _i >= _ref; 1 <= _ref ? _i++ : _i--) {
+        _results.push(this.$el.append("<span class='glyphicon .glyphicon-heart-empty'></span>"));
+      }
+      return _results;
+    };
+
+    Starrr.prototype.setRating = function(rating) {
+      if (this.options.rating === rating) {
+        rating = void 0;
+      }
+      this.options.rating = rating;
+      this.syncRating();
+      return this.$el.trigger('starrr:change', rating);
+    };
+
+    Starrr.prototype.syncRating = function(rating) {
+      var i, _i, _j, _ref;
+
+      rating || (rating = this.options.rating);
+      if (rating) {
+        for (i = _i = 0, _ref = rating - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+          this.$el.find('span').eq(i).removeClass('glyphicon-heart-empty').addClass('glyphicon-heart');
+        }
+      }
+      if (rating && rating < 5) {
+        for (i = _j = rating; rating <= 4 ? _j <= 4 : _j >= 4; i = rating <= 4 ? ++_j : --_j) {
+          this.$el.find('span').eq(i).removeClass('glyphicon-heart').addClass('glyphicon-heart-empty');
+        }
+      }
+      if (!rating) {
+        return this.$el.find('span').removeClass('glyphicon-heart').addClass('glyphicon-heart-empty');
+      }
+    };
+
+    return Starrr;
+
+  })();
+  return $.fn.extend({
+    starrr: function() {
+      var args, option;
+
+      option = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+      return this.each(function() {
+        var data;
+
+        data = $(this).data('star-rating');
+        if (!data) {
+          $(this).data('star-rating', (data = new Starrr($(this), option)));
+        }
+        if (typeof option === 'string') {
+          return data[option].apply(data, args);
+        }
+      });
+    }
+  });
+})(window.jQuery, window);
+
+$(function() {
+  return $(".starrr").starrr();
+});
+
+$( document ).ready(function() {
+
+  $('#hearts').on('starrr:change', function(e, value){
+    $('#count').html(value);
+  });
+
+  $('#hearts-existing').on('starrr:change', function(e, value){
+    $('#count-existing').html(value);
+
+  });
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>  
+
+<!--NAV BAR -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'home' %}">Resource Engine</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        
+        <div class="col-sm-3 col-md-3 col-md-offset-1 ">
+            <form class="navbar-form" role="search" action="{%url 'search:search1' %}" method="GET" autocomplete="off">
+                <div class="input-group">
+                    <input type="text" class=" form-control" placeholder="Search" name="search" id="users">
+                    <div class="input-group-btn">
+                        <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+    </div>
+</nav>
+<!-- ENDS HERE -->
+
+
+
+<script type="text/javascript">
+  
+</script>
+  <br><br><br><br>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="well well-sm" style="background:white;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well well-sm">
+                            <img src="http://d22r54gnmuhwmk.cloudfront.net/app-assets/global/default_user_icon-7a95ec473c1c41f6d020d32c0504a0ef.jpg" width="100%" height="100%"> 
+                        </div>
+                    </div>  
+                </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel text-center">
+                        <b>{{userName}}</b>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table type="hidden" class="table">
+                        <tr>
+                            <td><a href="#" class="btn btn-default btn-block">My Profile</a></td>
+                        </tr>
+                  
+                        <tr>
+                            <td><a href="#" class="btn btn-default btn-block" data-toggle="modal" data-target="#myModalFavourite">My Uploads</a></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><a href="#" class="btn btn-default btn-block" data-toggle="modal" data-target="#myModalRequest">My Downloads</a></td>
+                        </tr>
+                  
+                        <tr>
+                            <td><a  class="btn btn-default btn-block" data-toggle="modal" data-target="#myModalSettings">Settings</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><a href="#" class="btn btn-default btn-block" data-toggle="modal" data-target="#myModalLogout">Logout</a></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+       </div>
+
+    </div>
+
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-lg" style="background:white;">
+                        <!--UPLOADER HERE-->                
+                        <div class="row">
+                          <div class="col-md-12">
+                            <a href="{% url 'signup:loadUserProfile' %}" class="btn btn-default btn-block"><b>What's your todays post ???</b> </a>
+                          </div>
+                        </div>
+
+
+<!--
+  UPLOADER FOR GOES HERE 
+
+    <div class="form-group">
+
+        <form action="../resoures/Process" method="POST" enctype="multipart/form-data">
+  
+            <div class="form-group">
+
+            <input type="file" name="myfile" class="file">
+                <div class="input-group col-xs-12">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+                        <input type="text" class="form-control input-md" disabled placeholder="Upload Image">
+                            <span class="input-group-btn">
+                                <button class="browse btn btn-success input-md" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+                                    </span>
+                                        </div>
+                                            </div>
+
+  <div class="form-group">
+      <input type="submit" value="Post" class="btn btn-primary" name="myupload">
+    </div>
+</form>
+
+  </div>
+
+
+-->
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- IMG CONTAINER -->
+
+
+<!--RENDERING HOME STARTS HERE -->
+
+
+    
+
+
+
+
+
+
+<!--SAMPLE TEMPLATE FOR A IMAGE CARD-->
+
+<!--
+    <div class="row ">
+
+          <div class="col-md-12">
+                <div class="well well-sm" style="background:white;">
+                    <div class="row">
+                      <div class="col-md-2">
+                      
+                          <img src="https://res.cloudinary.com/crunchbase-production/image/upload/v1448830269/gzcifut4c2xah95x0ewd.jpg" class="img-responsive img-circle img-thumbnail">
+                        
+                      </div>
+
+                      <div class="col-md-10">
+                        <div class="panel" style="padding-top:15px;">
+                          <b>Mark Zukerberg</b>&nbsp;<small>a few seconds ago</small>
+                        </div>
+                        <p></p>
+                      </div>
+                    </div>
+                   
+                    <div class="row">
+                      <div class="col-md-12 text-justify">
+                        <p> <b>W</b>e spend a day at facebook headquarter and it was great please to meet them.. mark zukerberg at the facebook headquartesrs was more suurprising to me and he delievered a speech at the harvard facebook in the san diago</p>
+                      </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                          <div class="col-md-12">
+                                    <div class="panel">          
+                                            <img src="https://fbnewsroomus.files.wordpress.com/2015/05/gensler_facebook_0994.jpg?w=960" width="100%" height="100%">
+                                    </div>
+                          </div>
+                    </div>
+
+
+
+
+                    <div class="row">
+                      <div class="col-md-2">
+                        <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></a>
+                      </div>
+                    </div>
+
+
+
+
+<!--
+
+    <div class="row">
+          <div class="col-md-12">
+              <div class="well well-sm" style="background:white;">
+              
+                    <div class="row">
+        
+                          <div class="col-md-1 col-xs-1 col-sm-1">
+                                  <i class="fa fa-share fa-2x" aria-hidden="true"></i>
+                          </div>
+
+                          <div class="col-md-7 col-xs-8">
+                                <form class="form-group">
+                                        <input type="text" class="form-control" placeholder="Comment">
+                                </form>
+                          </div>
+
+
+                          <div class="col-md-3">
+                                        <input type="button" class="btn btn-default btn-block" value="Post">
+                          </div>
+
+                    </div>
+
+              </div>
+            
+          </div>
+        </div> 
+
+        -->       
+
+
+<!--
+      </div>
+    </div>
+    </div>
+-->
+
+
+<!--RENDERING HOME ENDS HERE -->
+
+
+    </div>
+    
+
+<div class="col-md-3">
+
+<div class="row">
+  <div class="col-md-12" >
+
+  <div class="well well-sm" style="background: white;">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="well well-sm text-center"><b>Recommended</b></div>
+      </div>
+    </div>
+
+
+    <!-- RECOMMENDING FRAMEWORK GOES HERE -->
+
+    {% if rlist %}
+      {% for l in rlist%}
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="well well-sm">
+          <div class="row">
+              {% if l.data_category == "Music" %}
+              <div class="col-md-1"><img class="img-circle" src="{% static 'image/music.png'%}" height="32" width="32"></div>
+              {% endif %}
+              {% if l.data_category == "Documents" %}
+              <div class="col-md-1"><img class="img-circle" src="{% static 'image/documents.png'%}" height="32" width="32"></div>
+              {% endif %}
+              {% if l.data_category == "Scripts" %}
+              <div class="col-md-1"><img class="img-circle" src="{% static 'image/scripts.png'%}" height="32" width="32"></div>
+              {% endif %}
+              {% if l.data_category == "Images" %}
+              <div class="col-md-1"><img class="img-circle" src="{% static 'image/images.png'%}" height="32" width="32"></div>
+              {% endif %}
+              {% if l.data_category == "Videos" %}
+              <div class="col-md-1"><img class="img-circle" src="{% static 'image/video.png'%}" height="32" width="32"></div>
+              {% endif %}
+              
+            <div class="col-md-10 text-justify" style="line-height:30px;padding-left:30px;">
+                <a href="{% url 'recommendPages:recommendPages' %}?data={{l.data_id}}&uploader={{l.data_uploader}}">{{ l.data_title }}</a>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <a href="{{ l.data_path }}" class="btn btn-block btn-default">Download</a>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+  {% endfor %}
+    {%endif%}
+      
+
+      <!-- WRITE THAT FUCKIN PRINT LINE HERE -->
+    
+
+    <!--ENDS HERE -->
+<br>
+
+<div class="row">
+    <div class="col-md-12">
+      <a class="btn btn-default btn-block text-center"><b>see more..<b></a>
+    </div>
+  </div>
+
+
+
+  </div>
+
+
+    
+  </div>
+</div>
+
+
+</div>
+  
+
+<div class="col-md-2">
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="well well-lg text-center">
+  <b>Ads here</b>
+
+  </div>
+      
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="well well-lg text-center">
+  <b>Ads here </b>
+
+  </div>
+     
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="well well-sm">
+      <table class="table" type="hidden">
+
+        <tr>
+          <div class="well well-sm text-center" >
+                  
+          </div>
+        </tr>
+
+        <tr>
+          <td>
+            <a href="#" class="btn btn-default btn-block"></a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <a href="#" class="btn btn-default btn-block"></a>
+          </td>
+        </tr>
+
+        <tr>
+       <td>
+            <a href="#" class="btn btn-default btn-block"></a>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </div>
+</div>
+
+<!--best sie-->
+
+
+<script type="text/javascript">
+  $(document).on('click', '.browse', function(){
+  var file = $(this).parent().parent().parent().find('.file');
+  file.trigger('click');
+});
+$(document).on('change', '.file', function(){
+  $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+});
+</script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+   
+<!-- Modal REQUEST -->
+<div id="myModalRequest" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center"><b>My Download List</b></h4>
+      </div>
+
+      <div class="modal-body">
+
+        <!--STARTS HERE -->
+      
+     <!-- Nav tabs --><div class="card">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active"><a href="#request" aria-controls="home" role="tab" data-toggle="tab">My Upload List</a></li>
+                                        <li role="presentation"><a href="#pending" aria-controls="messages" role="tab" data-toggle="tab">Pending Downloads</a></li>
+                                    
+                                    </ul>
+
+<br>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active" id="request">
+                                        
+               
+
+                                          <div class="container">
+            <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            </div>
+            </div><center><b>Your Download List Goes Here!</b></center>
+
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="pending">
+
+                                          
+
+                                        </div>
+                                        
+                                  </div>
+                                </div>
+                                <!--ENDS HERE -->
+
+
+     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal UPLOAD -->
+<div id="myModalUpload" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center"><b>Upload</b></h4>
+      </div>
+
+
+      <div class="modal-body">
+
+  <!--THESE FOR THE FAVOURITE-->        
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ends here -->
+
+<!--THE PICTURE BOX-->
+
+  <div id="myPictureModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+
+      <div class="modal-body">
+
+  <!--THESE FOR THE PICTURE BOX-->        
+
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ENDS HRE-->
+
+
+<!-- Modal Favourite -->
+<div id="myModalFavourite" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center"><b> My Download List</b></h4>
+      </div>
+
+
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Modal Settings -->
+<div id="myModalSettings" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center"><b>Settings</b></h4>
+      </div>
+
+
+      <div class="modal-body">
+
+  <!--SETTINGS GOES HERE-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--END OF SETTINGS-->
+
+<!-- LOGOUT DIALOG -->
+
+<div id="myModalLogout" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <b><big>Do you really want to logout????</big></b>
+        </div>
+      </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ENDS HERE-->
+
+  </body>
+</html>
+

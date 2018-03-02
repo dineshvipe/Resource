@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+{%load staticfiles%}
+{% load bootstrap3 %}
+{% block content %}
+  <div class="container">
+    <br>
+      <center><h1>Sign up for free!</h1></center>
+      <br>
+    <div class="row">
+      <div class="col-md-12">
+          <form method="POST">
+              {% csrf_token %}
+              {% bootstrap_form form %}
+              <script src="{%static 'javascript/validate.js' %}"></script>
+            <input type="Submit" class="btn btn-success" value="Sign Up">          
+          </form>
+      </div>
+    </div>
+  </div>
+
+<!--  <a href="{% url 'signup:verifyPage' %}">Link here</a>-->
+
+  {% endblock %}
+

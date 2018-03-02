@@ -1,0 +1,46 @@
+@import url(https://fonts.googleapis.com/css?family=Monoton);
+.search-banner
+{
+    background:whitesmoke;
+    height: 30%;
+    width: 100%;
+    position: absolute;
+    left:0%;
+    top:8.5%;
+    z-index: -1;
+} 
+.search-image 
+{
+    position: absolute;
+    left:30%;
+    top:23%;
+}
+    
+.search-logo
+{
+    position: absolute;
+    left: 45%;
+    top: 39%;
+    font-weight: bold;
+    font-family: 'Monoton', cursive;
+}
+
+input[type=text] {
+width: 530px;
+height: 50px;
+box-sizing: border-box;
+border: 2px solid #ccc;
+border-radius: 4px;
+font-size: 16px;
+background-color: white;
+background-image: url('searchicon.png');
+background-position: 10px 10px; 
+background-repeat: no-repeat;
+padding: 12px 20px 12px 40px;
+-webkit-transition: width 0.4s ease-in-out;
+transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+width: 80%;
+}

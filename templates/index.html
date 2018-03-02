@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{%load staticfiles %}
+{% block content %}
+
+<style>
+
+    body{
+        font-family: 'Droid Sans', sans-serif;
+    }
+    .search-banner
+        {
+            background:#fcfcfc;
+            height: 30%;
+            width: 100%;
+            position: absolute;
+            left:0%;
+            top:20%;
+            z-index: -1;
+        } 
+        .search-image 
+        {
+            position: absolute;
+            left:36%;
+            top:45%;
+        }
+            
+        .search-logo
+        {
+            position: absolute;
+            left: 43%;
+            top: 48%;
+            font-size: 30px;
+            font-weight: bold;
+            font-family: 'Droid Sans', sans-serif;
+        }
+
+input[type=text] {
+    width: 530px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 80%;
+    outline: none;
+}
+
+
+#suggest{
+
+    position: absolute;
+    top:62%;
+    left:7%;
+    height: auto;
+    width:50%;
+    text-align: left;
+    
+}
+
+.ui-state-hover {
+    background: whitesmoke!important;
+    
+
+}
+
+</style>
+
+   <script src="{%static 'javascript/ajax.js'%}"> </script>
+
+
+        <div class="search-banner">
+                <div class="search-image">
+                    <img src="https://www.shareicon.net/data/2015/08/15/85563_search_512x512.png" height="64" width="64">
+                </div>
+                <div class="search-logo">
+                    <span>Resource Search Engine</span>
+                </div>
+             </div>
+            
+             <br><br><br><br><br><br><br><br><br>
+             <!--
+                <div class="container">
+                 <div class="row">
+                     <div class="col-md-12">
+                         <center><h3>Search for any Resouces here!!</h3></center>
+                     </div>
+                 </div>
+             </div>
+            -->
+             <br><br><br><br><br>
+             <CENTER>
+                 
+                 <form action="{%url 'search:search1'%}" method="GET">
+                   <input type="text" name="search" placeholder="Search for anything here..." id="drugs">
+                   
+                   <button type="submit" class="btn btn-default" style="height:50px;width:80px;"><i class="fa fa-search"></i></button>
+                   <!--<input type="submit" class="btn btn-success" style='height:50px; width:130px;' value="Search">-->
+                 </form>
+                 <div id="suggest"></div>
+                 </CENTER>
+                 <br><br><br><br><br><br>
+
+                 
+{% endblock %}
