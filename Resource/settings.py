@@ -92,8 +92,12 @@ WSGI_APPLICATION = 'Resource.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'myproject',
+        'USER': 'dinesh',
+        'PASSWORD': 'dinesh',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -143,9 +147,8 @@ LOGOUT_REDIRECT_URL='thanks'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'deshmukhss3@rknec.edu'
-EMAIL_HOST_PASSWORD = 'iamrajan'
-#DEFAULT_FROM_EMAIL ='dineshyad72@gmail.com'
+EMAIL_HOST_USER = 'xxxxxxxx@xxxx.com'
+EMAIL_HOST_PASSWORD = '*********'
 EMAIL_USE_TLS = True
 
 
